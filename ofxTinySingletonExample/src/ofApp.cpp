@@ -2,67 +2,70 @@
 class ClassA{
 public:
     ClassA(){
-        std::cout << "ClassA()" << std::endl;
+        std::cout << "ClassA is being created" << std::endl;
     }
     ~ClassA(){
-        std::cout << "~ClassA()" << std::endl;
+        std::cout << "ClassA is being deleted" << std::endl;
     }
 };
 
 class ClassB{
 public:
     ClassB(){
-        std::cout << "ClassB()" << std::endl;
+        std::cout << "ClassB is being created" << std::endl;
     }
     ~ClassB(){
-        std::cout << "~ClassB()" << std::endl;
+        std::cout << "ClassB is being deleted" << std::endl;
     }
 };
 
 class ClassC{
 public:
     ClassC(){
-        std::cout << "ClassC()" << std::endl;
+        std::cout << "ClassC is being created" << std::endl;
     }
     ~ClassC(){
-        std::cout << "~ClassC()" << std::endl;
+        std::cout << "ClassC is being deleted" << std::endl;
     }
 };
 
 class ClassD{
 public:
     ClassD(){
-        std::cout << "ClassD()" << std::endl;
+        std::cout << "ClassD is being created" << std::endl;
     }
     ~ClassD(){
-        std::cout << "~ClassD()" << std::endl;
+        std::cout << "ClassD is being deleted" << std::endl;
     }
 };
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    // insert code here...
+    cout << "-----Begin-----" << endl;
+    ofxTinySingleton<ClassA>::get_instance(); //"ClassA is being created"
+    ofxTinySingleton<ClassA>::get_instance();
+    ofxTinySingleton<ClassA>::get_instance();
+    
+    ofxTinySingleton<ClassB>::get_instance(); //"ClassA is being created"
     ofxTinySingleton<ClassA>::get_instance();
     ofxTinySingleton<ClassA>::get_instance();
     ofxTinySingleton<ClassA>::get_instance();
     
+    ofxTinySingleton<ClassC>::get_instance(); //"ClassA is being created"
     ofxTinySingleton<ClassB>::get_instance();
     ofxTinySingleton<ClassA>::get_instance();
-    ofxTinySingleton<ClassA>::get_instance();
+    ofxTinySingleton<ClassB>::get_instance();
     ofxTinySingleton<ClassA>::get_instance();
     
+    ofxTinySingleton<ClassD>::get_instance(); //"ClassD is being created"
     ofxTinySingleton<ClassC>::get_instance();
     ofxTinySingleton<ClassB>::get_instance();
     ofxTinySingleton<ClassA>::get_instance();
     ofxTinySingleton<ClassB>::get_instance();
     ofxTinySingleton<ClassA>::get_instance();
     
-    ofxTinySingleton<ClassD>::get_instance();
-    ofxTinySingleton<ClassC>::get_instance();
-    ofxTinySingleton<ClassB>::get_instance();
-    ofxTinySingleton<ClassA>::get_instance();
-    ofxTinySingleton<ClassB>::get_instance();
-    ofxTinySingleton<ClassA>::get_instance();
+    cout << "-----End-----" << endl;
+    cout << "The order of the destructions should be ClassD,ClassC,ClassB,ClassA\n" << endl;
 }
 
 //--------------------------------------------------------------
@@ -72,7 +75,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    ofDrawBitmapString("Exit the app and check the console", 300, 400);
 }
 
 //--------------------------------------------------------------
