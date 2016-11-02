@@ -20,7 +20,7 @@ void ofApp::draw(){
     ofSetWindowTitle(ofToString(ofGetFrameRate()));
     for(int x=0;x<40;x++){
         for(int y=0;y<40;y++){
-            ofxTinySingleton<Image>::get_instance().draw(x*200, y*200);
+            $TS(Image).draw(x*200, y*200);
         }
     }
 }

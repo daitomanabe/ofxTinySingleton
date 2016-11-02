@@ -9,6 +9,8 @@
 #ifndef ofxTinySingleton_hpp
 #define ofxTinySingleton_hpp
 
+#define $TS(Class) (ofxTinySingleton<Class>::get_instance())
+
 #include <stdio.h>
 #include <assert.h>
 #include <mutex>
